@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class buttons : MonoBehaviour {
+public class Buttons : MonoBehaviour {
 
 public void PlayButton (int scene)
 	{
