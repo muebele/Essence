@@ -107,6 +107,7 @@
     <Compile Include="Assets\Scripts\Spells\Traps\TrapSpell.cs" />
     <Compile Include="Assets\Scripts\Terrain\Essence.cs" />
     <Compile Include="Assets\Scripts\Terrain\EssenceGenerator.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons.cs" />
     <Compile Include="Assets\Scripts\UI\HealthSlider.cs" />
     <Compile Include="Assets\Scripts\UI\UpdateUI.cs" />
   </ItemGroup>
