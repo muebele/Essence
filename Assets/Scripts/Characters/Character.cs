@@ -28,7 +28,7 @@ namespace Essence.Characters
 
         public List<StatusEffect> statusEffects = new List<StatusEffect>();
 
-        public Spell[] spells = new Spell[3];
+        public Spell[] spells = new Spell[4];
 
 		public Slider healthSlider;
         public Text fireUI;
@@ -59,8 +59,9 @@ namespace Essence.Characters
             earthMana = 110;
             
             spells[0] = new Fireball();
-            spells[1] = new Teleport();
+            spells[1] = new Stream();
             spells[2] = new Trap();
+            spells[3] = new Gust();
             
 		}
 	

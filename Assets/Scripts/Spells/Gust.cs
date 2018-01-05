@@ -1,11 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
-namespace Assets.Scripts.Spells
+namespace Essence.Spells
 {
-    class Gust
+    public class Gust : ProjectileSpell
     {
+        public Gust()
+        {
+
+            spellName = "Gust";
+            description = "Knock enemies back with a gust of wind";
+
+            fireReq = 0;
+            waterReq = 0;
+            windReq = 1;
+            earthReq = 0;
+
+            maxCooldown = 240;
+
+        }
+
     }
 }
+
