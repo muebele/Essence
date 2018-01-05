@@ -65,6 +65,11 @@ namespace Essence.Characters
                 spell = character.spells[2];
                 if (Input.GetButton("Trigger")) spell = character.spells[6];
             }
+            else if (Input.GetButtonDown("Spell4"))
+            {
+                spell = character.spells[3];
+                if (Input.GetButton("Trigger")) spell = character.spells[7];
+            }
 
             if (spell != null)
             {
@@ -82,7 +87,7 @@ namespace Essence.Characters
                         GameObject spellObject = (GameObject)Resources.Load(spell.spellName, typeof(GameObject));
                         spellObject.transform.position = this.transform.position;
 
-                        if (directionPointing.magnitude > 0)
+                        if (directionPointing.magnitude > 0)    
                         {
                             spellObject.transform.GetComponent<SpellBehavior>().movement = directionPointing;
                         }
@@ -93,6 +98,7 @@ namespace Essence.Characters
 
 
                         spellObject.transform.GetComponent<SpellBehavior>().caster = this.character;
+
                         Instantiate(spellObject);
                     }
                     
