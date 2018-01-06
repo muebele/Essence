@@ -16,18 +16,16 @@ namespace Essence.Spells
         // Use this for initialization
         void Start()
         {
+            origin = caster.transform.position;
+
             damage = 2;
 
             duration = 20;
 
-
-            Gust gust = new Gust();
-            GameObject stream = (GameObject)Resources.Load(gust.spellName, typeof(GameObject));
-            ParticleSystem system = stream.GetComponent<ParticleSystem>();
-
-
+            this.gameObject.transform.position = caster.transform.position;
+            this.gameObject.transform.eulerAngles = Spell.GetEulerAngles(caster);
+            ParticleSystem system = this.gameObject.GetComponent<ParticleSystem>();
             
-            system.Play();
 
             angle = system.shape.angle;
             distance = system.main.startSpeed.constant * system.main.startLifetime.constant;
@@ -48,13 +46,19 @@ namespace Essence.Spells
             duration--;
             if (duration == 0)
             {
-                Destroy(this.gameObject);
+                //Destroy(this.gameObject);
             }
         }
 
         public override void Execute(Character target)
         {
             target.health -= this.damage;
+
+            Vector3 difference = target.transform.position - origin;
+            Vector3 final = (difference.normalized * distance) + origin;
+            difference = final - target.transform.position;
+
+            target.GetComponent<Controller>().ApplyKnockback(final);
 
 
         }
