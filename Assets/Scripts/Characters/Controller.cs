@@ -164,10 +164,14 @@ namespace Essence.Characters
         {
             Vector3 difference = targetLocation - rigidBody.transform.position;
 
-            knockbackDirection = difference;
-            knockbackFrames = 30;
+            knockbackDirection = difference.normalized * 6;
+            knockbackFrames = (int)difference.magnitude * 10;
 
-            underKnockback = true;
+            Debug.Log(knockbackDirection);
+            Debug.Log(knockbackFrames);
+
+            if (knockbackFrames > 0) underKnockback = true;
+
         }
 
         private void ManageSpells()

@@ -20,20 +20,22 @@ namespace Essence.Spells
 
             damage = 2;
 
-            duration = 20;
+            duration = 100;
 
+            // Set position/rotation
             this.gameObject.transform.position = caster.transform.position;
             this.gameObject.transform.eulerAngles = Spell.GetEulerAngles(caster);
-            ParticleSystem system = this.gameObject.GetComponent<ParticleSystem>();
-            
 
+            // Get area of affect
+            ParticleSystem system = this.gameObject.GetComponent<ParticleSystem>();
             angle = system.shape.angle;
             distance = system.main.startSpeed.constant * system.main.startLifetime.constant;
 
             
-
+            // Raycast targets
             List<Character> targets = Spell.AcquireTargets(caster, angle, distance);
 
+            
             foreach (Character target in targets)
             {
                 Execute(target);
@@ -46,7 +48,7 @@ namespace Essence.Spells
             duration--;
             if (duration == 0)
             {
-                //Destroy(this.gameObject);
+                Destroy(this.gameObject);
             }
         }
 
