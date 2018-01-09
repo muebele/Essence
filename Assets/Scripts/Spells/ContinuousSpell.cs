@@ -24,10 +24,7 @@ namespace Essence.Spells
             if (toggled)
             {
                 spellObject.transform.position = caster.transform.position;
-                Vector3 direction = caster.gameObject.GetComponent<Controller>().directionPointing;
-                float a = Vector3.Angle(direction, new Vector3(1, 0));
-                if (caster.gameObject.GetComponent<Controller>().directionPointing.y > 0) a = -a;
-                spellObject.transform.localEulerAngles = new Vector3(a, 90, 0);
+                spellObject.transform.localEulerAngles = GetEulerAngles(caster);
 
                 if (ticks % frequency == 0)
                 {

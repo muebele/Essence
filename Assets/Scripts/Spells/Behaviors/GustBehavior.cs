@@ -16,26 +16,26 @@ namespace Essence.Spells
         // Use this for initialization
         void Start()
         {
+            origin = caster.transform.position;
+
             damage = 2;
 
-            duration = 20;
+            duration = 100;
 
+            // Set position/rotation
+            this.gameObject.transform.position = caster.transform.position;
+            this.gameObject.transform.eulerAngles = Spell.GetEulerAngles(caster);
 
-            Gust gust = new Gust();
-            GameObject stream = (GameObject)Resources.Load(gust.spellName, typeof(GameObject));
-            ParticleSystem system = stream.GetComponent<ParticleSystem>();
-
-
-            
-            system.Play();
-
+            // Get area of affect
+            ParticleSystem system = this.gameObject.GetComponent<ParticleSystem>();
             angle = system.shape.angle;
             distance = system.main.startSpeed.constant * system.main.startLifetime.constant;
 
             
-
+            // Raycast targets
             List<Character> targets = Spell.AcquireTargets(caster, angle, distance);
 
+            
             foreach (Character target in targets)
             {
                 Execute(target);
@@ -55,6 +55,12 @@ namespace Essence.Spells
         public override void Execute(Character target)
         {
             target.health -= this.damage;
+
+            Vector3 difference = target.transform.position - origin;
+            Vector3 final = (difference.normalized * distance) + origin;
+            difference = final - target.transform.position;
+
+            target.GetComponent<Controller>().ApplyKnockback(final);
 
 
         }

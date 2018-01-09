@@ -73,5 +73,13 @@ namespace Essence.Spells
 
             return targets;
         }
+
+        public static Vector3 GetEulerAngles(Character character)
+        {
+            Vector3 direction = character.gameObject.GetComponent<Controller>().directionPointing;
+            float a = Vector3.Angle(direction, new Vector3(1, 0));
+            if (character.gameObject.GetComponent<Controller>().directionPointing.y > 0) a = -a;
+            return new Vector3(a, 90, 0);
+        }
 	}
 }

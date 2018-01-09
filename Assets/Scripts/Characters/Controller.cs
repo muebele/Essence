@@ -20,6 +20,10 @@ namespace Essence.Characters
         private int dashFrames = 0;
         private float dashScale = 4;
 
+        private bool underKnockback = false;
+        private int knockbackFrames = 0;
+        private Vector3 knockbackDirection;
+
         Spell spell = null;
 
 
@@ -115,34 +119,60 @@ namespace Essence.Characters
         }
 
 		private void ProcessMovement(){
-            movement.y = Input.GetAxis("Vertical");
-            movement.x = Input.GetAxis("Horizontal");
-		
-			
-			if (dashFrames > 0) {
-                movement = movement * dashScale;
-				
-				dashFrames -= 1;
-			}
-
-            directionPointing.y = Input.GetAxis("VerticalAim");
-            //Debug.Log(Input.GetAxis("VerticalAim"));
-            directionPointing.x = Input.GetAxis("HorizontalAim");
-            directionPointing.Normalize();
-
-            rigidBody.velocity = movement * GlobalConstants.Movement_Scale * character.speed;
-            
-
-            if(movement.normalized.magnitude > 0)
+            if (!underKnockback)
             {
-                directionFacing = movement.normalized;
+                movement.y = Input.GetAxis("Vertical");
+                movement.x = Input.GetAxis("Horizontal");
+
+
+                if (dashFrames > 0)
+                {
+                    movement = movement * dashScale;
+
+                    dashFrames -= 1;
+                }
+
+                directionPointing.y = Input.GetAxis("VerticalAim");
+                //Debug.Log(Input.GetAxis("VerticalAim"));
+                directionPointing.x = Input.GetAxis("HorizontalAim");
+                directionPointing.Normalize();
+
+                rigidBody.velocity = movement * GlobalConstants.Movement_Scale * character.speed;
+
+
+                if (movement.normalized.magnitude > 0)
+                {
+                    directionFacing = movement.normalized;
+                }
+
+                if (directionPointing.magnitude == 0)
+                {
+                    directionPointing = directionFacing;
+                }
             }
-            
-            if (directionPointing.magnitude == 0)
+            else
             {
-                directionPointing = directionFacing;
+                Debug.Log(knockbackDirection);
+                knockbackFrames--;
+                rigidBody.velocity = knockbackDirection;
+
+                if (knockbackFrames == 0) underKnockback = false;
             }
 		}
+
+        public void ApplyKnockback(Vector3 targetLocation)
+        {
+            Vector3 difference = targetLocation - rigidBody.transform.position;
+
+            knockbackDirection = difference.normalized * 6;
+            knockbackFrames = (int)difference.magnitude * 10;
+
+            Debug.Log(knockbackDirection);
+            Debug.Log(knockbackFrames);
+
+            if (knockbackFrames > 0) underKnockback = true;
+
+        }
 
         private void ManageSpells()
         {
