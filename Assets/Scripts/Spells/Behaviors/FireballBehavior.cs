@@ -41,7 +41,7 @@ namespace Essence.Spells
             duration--;
             if (duration == 0)
             {
-                //Destroy(this.gameObject);
+                Destroy(this.gameObject);
             }
         }
 

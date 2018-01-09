@@ -54,7 +54,7 @@ namespace Essence.Characters
             maxEarthMana = 50;
 
             fireMana = 110;
-            waterMana = 110;
+            waterMana = 111;
             windMana = 110;
             earthMana = 110;
             

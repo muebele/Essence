@@ -17,7 +17,7 @@ namespace Essence.Spells
             windReq = 0;
             earthReq = 0;
 
-            maxCooldown = 240;
+            maxCooldown = 180;
 
         }
 
