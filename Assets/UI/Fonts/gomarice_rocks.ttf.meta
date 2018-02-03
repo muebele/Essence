@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 63dc47f1fa1bd644087451b550941de1
+timeCreated: 1515632825
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Rocks__G
+  fontNames:
+  - Rocks__G
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
