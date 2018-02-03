@@ -43,7 +43,7 @@ namespace Essence.Characters
 		{
 			maxHealth = 100;
 			health = maxHealth;
-			healthSlider.maxValue = maxHealth;
+			//healthSlider.maxValue = maxHealth;
 
             maxSpeed = 1;
             speed = 1;
@@ -70,11 +70,11 @@ namespace Essence.Characters
 		{
             ProcessStatusEffects();
 
-			healthSlider.value = health;
-            fireUI.text = fireMana + " / " + maxFireMana;
-            waterUI.text = waterMana + " / " + maxWaterMana;
-            earthUI.text = earthMana + " / " + maxEarthMana;
-            airUI.text = windMana + " / " + maxWindMana;
+			//healthSlider.value = health;
+            //fireUI.text = fireMana + " / " + maxFireMana;
+            //waterUI.text = waterMana + " / " + maxWaterMana;
+            //earthUI.text = earthMana + " / " + maxEarthMana;
+            //airUI.text = windMana + " / " + maxWindMana;
 
             if (health <= 0) 
 			{
