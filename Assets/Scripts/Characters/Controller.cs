@@ -7,6 +7,7 @@ namespace Essence.Characters
 {
     public class Controller : MonoBehaviour
     {
+        public string playerNum;
 
         private Character character;
 
@@ -49,30 +50,30 @@ namespace Essence.Characters
 		private void ProcessCommand(){
             spell = null;
 
-			if (Input.GetButtonDown("Special")) 
+			if (Input.GetButtonDown(playerNum + "Special")) 
 			{
                 dashFrames = 10;
 			}
             
-			if (Input.GetButtonDown("Spell1")) 
+			if (Input.GetButtonDown(playerNum + "Spell1")) 
 			{
                 spell = character.spells[0];
-                if (Input.GetButton("Trigger")) spell = character.spells[4];
+                if (Input.GetButton(playerNum + "Trigger")) spell = character.spells[4];
 			}
-            else if (Input.GetButtonDown("Spell2"))
+            else if (Input.GetButtonDown(playerNum + "Spell2"))
             {
                 spell = character.spells[1];
-                if (Input.GetButton("Trigger")) spell = character.spells[5];
+                if (Input.GetButton(playerNum + "Trigger")) spell = character.spells[5];
             }
-            else if (Input.GetButtonDown("Spell3"))
+            else if (Input.GetButtonDown(playerNum + "Spell3"))
             {
                 spell = character.spells[2];
-                if (Input.GetButton("Trigger")) spell = character.spells[6];
+                if (Input.GetButton(playerNum + "Trigger")) spell = character.spells[6];
             }
-            else if (Input.GetButtonDown("Spell4"))
+            else if (Input.GetButtonDown(playerNum + "Spell4"))
             {
                 spell = character.spells[3];
-                if (Input.GetButton("Trigger")) spell = character.spells[7];
+                if (Input.GetButton(playerNum + "Trigger")) spell = character.spells[7];
             }
 
             if (spell != null)
@@ -121,8 +122,8 @@ namespace Essence.Characters
 		private void ProcessMovement(){
             if (!underKnockback)
             {
-                movement.y = Input.GetAxis("Vertical");
-                movement.x = Input.GetAxis("Horizontal");
+                movement.y = Input.GetAxis(playerNum + "Vertical");
+                movement.x = Input.GetAxis(playerNum + "Horizontal");
 
 
                 if (dashFrames > 0)
@@ -132,9 +133,8 @@ namespace Essence.Characters
                     dashFrames -= 1;
                 }
 
-                directionPointing.y = Input.GetAxis("VerticalAim");
-                //Debug.Log(Input.GetAxis("VerticalAim"));
-                directionPointing.x = Input.GetAxis("HorizontalAim");
+                directionPointing.y = Input.GetAxis(playerNum + "VerticalAim");
+                directionPointing.x = Input.GetAxis(playerNum + "HorizontalAim");
                 directionPointing.Normalize();
 
                 rigidBody.velocity = movement * GlobalConstants.Movement_Scale * character.speed;
