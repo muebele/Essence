@@ -45,7 +45,7 @@ namespace Essence.Characters
 		{
 			maxHealth = 100;
 			health = maxHealth;
-			//healthSlider.maxValue = maxHealth;
+			healthSlider.maxValue = maxHealth;
 
             maxSpeed = 1;
             speed = 1;
@@ -55,20 +55,17 @@ namespace Essence.Characters
             maxWindMana = 10;
             maxEarthMana = 10;
 
-            fireMana = 10;
-            waterMana = 5;
+            fireMana = 1;
+            waterMana = 1;
             windMana = 1;
-            earthMana = 0;
+            earthMana = 1;
             
             spells[0] = new Fireball();
             spells[1] = new Stream();
             spells[2] = new Trap();
             spells[3] = new Gust();
 
-            UpdateManaUI(fireMana, "MF");
-            UpdateManaUI(waterMana, "MWa");
-            UpdateManaUI(windMana, "MWi");
-            UpdateManaUI(earthMana, "ME");
+            UpdateAllManaUI();
 		}
 	
 		// Update is called once per frame
@@ -76,7 +73,7 @@ namespace Essence.Characters
 		{
             ProcessStatusEffects();
 
-			//healthSlider.value = health;
+			healthSlider.value = health;
             //fireUI.text = fireMana + " / " + maxFireMana;
             //waterUI.text = waterMana + " / " + maxWaterMana;
             //earthUI.text = earthMana + " / " + maxEarthMana;
@@ -125,6 +122,8 @@ namespace Essence.Characters
                     spell.cooldown = spell.maxCooldown;
                     spell.isAvailable = false;
 
+                    UpdateAllManaUI();
+
                     return true;
                 }
 
@@ -139,18 +138,22 @@ namespace Essence.Characters
                 case Element.FIRE:
                     fireMana += quantity;
                     if (fireMana > maxFireMana) fireMana = maxFireMana;
+                    UpdateManaUI(fireMana, "MF");
                     break;
                 case Element.WATER:
                     waterMana += quantity;
                     if (waterMana > maxWaterMana) waterMana = maxWaterMana;
+                    UpdateManaUI(waterMana, "MWa");
                     break;
                 case Element.WIND:
                     windMana += quantity;
                     if (windMana > maxWindMana) windMana = maxWindMana;
+                    UpdateManaUI(windMana, "MWi");
                     break;
                 case Element.EARTH:
                     earthMana += quantity;
                     if (earthMana > maxEarthMana) earthMana = maxEarthMana;
+                    UpdateManaUI(earthMana, "ME");
                     break;
             }
         }
@@ -168,22 +171,31 @@ namespace Essence.Characters
             return null;
         }
 
+        private void UpdateAllManaUI()
+        {
+            UpdateManaUI(fireMana, "MF");
+            UpdateManaUI(waterMana, "MWa");
+            UpdateManaUI(windMana, "MWi");
+            UpdateManaUI(earthMana, "ME");
+        }
+
         private void UpdateManaUI(int mana, string manaType)
         {
             int i = 1;
             while (i <= 10)
             {
                 Image image = GameObject.Find(playerNum + manaType + i).GetComponent<Image>();
-                Debug.Log(image.name);
                 if (mana > 0)
                 {
-                    image.sprite = Resources.Load<Sprite>(".//UI/UI " + manaType);
-                    Debug.Log(image.sprite.name);
+                    image.sprite = Resources.Load<Sprite>("UI/UI " + manaType);
                 }
                 else
                 {
-                    image.sprite = Resources.Load<Sprite>(".//UI/UI Image Empty");
+                    image.sprite = Resources.Load<Sprite>("UI/UI Image Empty");
                 }
+
+                i++;
+                mana--;
             }
         }
     }

@@ -19,7 +19,7 @@ namespace Essence.Essence
         {
             SetElements();
 
-            quantity = 5;
+            quantity = 1;
         }
 
         void Update()
@@ -29,7 +29,6 @@ namespace Essence.Essence
 
         void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log("happening");
             GameObject obj = col.gameObject;
 
             Character character = (Character)obj.GetComponent(typeof(Character));

@@ -22,15 +22,19 @@ namespace Essence.Essence
             mapWidth = Screen.width;
             mapHeight = Screen.height;
 
-            fireSpawners.Add(GameObject.Find("FireSpawn1"));
-            waterSpawners.Add(GameObject.Find("WaterSpawn1"));
-            earthSpawners.Add(GameObject.Find("EarthSpawn1"));
-            airSpawners.Add(GameObject.Find("AirSpawn1"));
+            for (int i = 1; i <= 10; i++)
+            {
+                fireSpawners.Add(GameObject.Find("FireSpawn" + i));
+                waterSpawners.Add(GameObject.Find("WaterSpawn" + i));
+                //earthSpawners.Add(GameObject.Find("EarthSpawn" + i));
+                airSpawners.Add(GameObject.Find("AirSpawn" + i));
+            }
+            
         }
 
         void Update()
         {
-            if (counter % 600 == 0)
+            if (counter % 6000 == 0)
             {
                 foreach (GameObject spawner in fireSpawners)
                 {
