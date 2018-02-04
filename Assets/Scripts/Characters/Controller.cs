@@ -89,7 +89,7 @@ namespace Essence.Characters
 
                     else if (spell is ProjectileSpell)
                     {
-                        GameObject spellObject = (GameObject)Resources.Load(spell.spellName, typeof(GameObject));
+                        GameObject spellObject = Resources.Load<GameObject>("Spells/"+spell.spellName);
                         spellObject.transform.position = this.transform.position;
 
                         if (directionPointing.magnitude > 0)    
@@ -124,7 +124,6 @@ namespace Essence.Characters
             {
                 movement.y = Input.GetAxis(playerNum + "Vertical");
                 movement.x = Input.GetAxis(playerNum + "Horizontal");
-
 
                 if (dashFrames > 0)
                 {

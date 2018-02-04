@@ -51,7 +51,7 @@ namespace Essence.Spells
             }
             else
             {
-                spellObject = (GameObject)Resources.Load(spellName, typeof(GameObject));
+                spellObject = Resources.Load<GameObject>("Spells/" + spellName); ;
 
                 spellObject.transform.position = caster.transform.position;
                 Vector3 direction = caster.gameObject.GetComponent<Controller>().directionPointing;

@@ -23,9 +23,9 @@ namespace Essence.Spells
         void OnTriggerEnter2D(Collider2D col)
         {
             GameObject obj = col.gameObject;
-            //Debug.Log(obj.tag);
-            //Debug.Log(obj.layer);
-            //Debug.Log(obj.name);
+            Debug.Log(obj.tag);
+            Debug.Log(obj.layer);
+            Debug.Log(obj.name);
 
             Character character = (Character)obj.GetComponent(typeof(Character));
             if (character != null)

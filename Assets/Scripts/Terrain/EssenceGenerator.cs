@@ -37,7 +37,7 @@ namespace Essence.Essence
                     if (spawner.transform.childCount == 0)
                     {
                         
-                        GameObject orb = (GameObject)Resources.Load("Orb_Fire", typeof(GameObject));
+                        GameObject orb = Resources.Load<GameObject>("Terrain/Orb_Fire");
                         
                         orb = Instantiate(orb);
                         orb.transform.parent = spawner.transform;
@@ -48,7 +48,7 @@ namespace Essence.Essence
                 {
                     if (spawner.transform.childCount == 0)
                     {
-                        GameObject orb = (GameObject)Resources.Load("Orb_Water", typeof(GameObject));
+                        GameObject orb = Resources.Load<GameObject>("Terrain/Orb_Water");
                         orb = Instantiate(orb);
                         orb.transform.parent = spawner.transform;
                         orb.transform.position = spawner.transform.position;
@@ -59,7 +59,7 @@ namespace Essence.Essence
                     if (spawner.transform.childCount == 0)
                     {
                         
-                        GameObject orb = (GameObject)Resources.Load("Orb_Wind", typeof(GameObject));
+                        GameObject orb = Resources.Load<GameObject>("Terrain/Orb_Wind");
                         orb = Instantiate(orb);
                         orb.transform.parent = spawner.transform;
                         orb.transform.position = spawner.transform.position;
@@ -69,7 +69,7 @@ namespace Essence.Essence
                 {
                     if (spawner.transform.childCount == 0)
                     {
-                        GameObject orb = (GameObject)Resources.Load("Orb_Earth", typeof(GameObject));
+                        GameObject orb = Resources.Load<GameObject>("Terrain/Orb_Earth");
                         orb.transform.position = spawner.transform.position;
                         orb = Instantiate(orb);
                         orb.transform.parent = spawner.transform;

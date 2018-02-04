@@ -33,7 +33,7 @@ namespace Essence.Spells
             cooldown = 0;
             frequency = 60;
 
-            GameObject stream = (GameObject)Resources.Load(spellName, typeof(GameObject));
+            GameObject stream = Resources.Load<GameObject>("Spells/" + spellName); ;
             ParticleSystem system = stream.GetComponent<ParticleSystem>();
             angle = system.shape.angle;
             distance = system.main.startSpeed.constant * system.main.startLifetime.constant;

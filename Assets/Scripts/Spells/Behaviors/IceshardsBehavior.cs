@@ -43,7 +43,7 @@ namespace Essence.Spells
             yield return new WaitForSeconds(shardGap);
             if (numShards > 0) StartCoroutine(GenerateShards(numShards-1));
 
-            GameObject iceShard = (GameObject)Resources.Load("Iceshard", typeof(GameObject));
+            GameObject iceShard = Resources.Load<GameObject>("Spells/Iceshard");
             iceShard.transform.position = this.startPosition;
 
             float angleRotation = Random.Range(-30, 30);

@@ -9,6 +9,8 @@ namespace Essence.Characters
 {
 	public class Character : MonoBehaviour
 	{
+        public string playerNum;
+
 		public float health;
 		private float maxHealth;
 
@@ -48,21 +50,25 @@ namespace Essence.Characters
             maxSpeed = 1;
             speed = 1;
 
-            maxFireMana = 50;
-            maxWaterMana = 50;
-            maxWindMana = 50;
-            maxEarthMana = 50;
+            maxFireMana = 10;
+            maxWaterMana = 10;
+            maxWindMana = 10;
+            maxEarthMana = 10;
 
-            fireMana = 110;
-            waterMana = 111;
-            windMana = 110;
-            earthMana = 110;
+            fireMana = 10;
+            waterMana = 5;
+            windMana = 1;
+            earthMana = 0;
             
             spells[0] = new Fireball();
             spells[1] = new Stream();
             spells[2] = new Trap();
             spells[3] = new Gust();
-            
+
+            UpdateManaUI(fireMana, "MF");
+            UpdateManaUI(waterMana, "MWa");
+            UpdateManaUI(windMana, "MWi");
+            UpdateManaUI(earthMana, "ME");
 		}
 	
 		// Update is called once per frame
@@ -160,6 +166,25 @@ namespace Essence.Characters
             }
 
             return null;
+        }
+
+        private void UpdateManaUI(int mana, string manaType)
+        {
+            int i = 1;
+            while (i <= 10)
+            {
+                Image image = GameObject.Find(playerNum + manaType + i).GetComponent<Image>();
+                Debug.Log(image.name);
+                if (mana > 0)
+                {
+                    image.sprite = Resources.Load<Sprite>(".//UI/UI " + manaType);
+                    Debug.Log(image.sprite.name);
+                }
+                else
+                {
+                    image.sprite = Resources.Load<Sprite>(".//UI/UI Image Empty");
+                }
+            }
         }
     }
 }
