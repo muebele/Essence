@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -187,7 +187,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 86861417}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1600488213}
+        m_MethodName: DecrementColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &86861417
@@ -445,7 +456,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 347385043}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 492835143}
+        m_MethodName: IncrementColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &347385043
@@ -693,6 +715,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 492835142}
+  - component: {fileID: 492835143}
   m_Layer: 0
   m_Name: P1
   m_TagString: Untagged
@@ -722,6 +745,25 @@ Transform:
   m_Father: {fileID: 1479638294}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &492835143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492835141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bd4e726e08e9945a4690d12a496a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortraitCount: 10
+  ColorCount: 10
+  Portrait: {fileID: 1826855662}
+  Color: {fileID: 546885569}
+  OtherPlayers:
+  - {fileID: 2138518220}
+  - {fileID: 1600488213}
+  - {fileID: 515733964}
 --- !u!1 &515733962
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +772,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 515733963}
+  - component: {fileID: 515733964}
   m_Layer: 0
   m_Name: P4
   m_TagString: Untagged
@@ -759,6 +802,25 @@ Transform:
   m_Father: {fileID: 1479638294}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &515733964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 515733962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bd4e726e08e9945a4690d12a496a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortraitCount: 10
+  ColorCount: 9
+  Portrait: {fileID: 353473623}
+  Color: {fileID: 900129753}
+  OtherPlayers:
+  - {fileID: 492835143}
+  - {fileID: 2138518220}
+  - {fileID: 1600488213}
 --- !u!1 &546885569
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.6443301, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1043,7 +1105,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 650230540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 515733964}
+        m_MethodName: DecrementColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &650230540
@@ -1153,7 +1226,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 738300625}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 515733964}
+        m_MethodName: IncrementColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &738300625
@@ -1263,7 +1347,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 761789122}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2138518220}
+        m_MethodName: DecrementPortrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &761789122
@@ -1645,7 +1740,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1007305075}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 492835143}
+        m_MethodName: IncrementPortrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1007305075
@@ -1755,7 +1861,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1031805107}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 492835143}
+        m_MethodName: DecrementPortrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1031805107
@@ -1865,7 +1982,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1044759882}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2138518220}
+        m_MethodName: DecrementColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1044759882
@@ -1975,7 +2103,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1050896764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 515733964}
+        m_MethodName: IncrementPortrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1050896764
@@ -2085,7 +2224,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1071414011}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1600488213}
+        m_MethodName: IncrementColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1071414011
@@ -2488,7 +2638,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1255815139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1600488213}
+        m_MethodName: DecrementPortrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1255815139
@@ -2950,7 +3111,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1479236524}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 492835143}
+        m_MethodName: DecrementColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1479236524
@@ -3375,7 +3547,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1592366957}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2138518220}
+        m_MethodName: IncrementColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1592366957
@@ -3419,6 +3602,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1600488212}
+  - component: {fileID: 1600488213}
   m_Layer: 0
   m_Name: P3
   m_TagString: Untagged
@@ -3448,6 +3632,25 @@ Transform:
   m_Father: {fileID: 1479638294}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600488213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1600488211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bd4e726e08e9945a4690d12a496a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortraitCount: 10
+  ColorCount: 9
+  Portrait: {fileID: 472813923}
+  Color: {fileID: 1081680804}
+  OtherPlayers:
+  - {fileID: 492835143}
+  - {fileID: 2138518220}
+  - {fileID: 515733964}
 --- !u!1 &1604188954
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,7 +3725,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1604188957}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2138518220}
+        m_MethodName: IncrementPortrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1604188957
@@ -3706,7 +3920,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1758253710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 515733964}
+        m_MethodName: DecrementPortrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1758253710
@@ -3884,7 +4109,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1918818075}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1600488213}
+        m_MethodName: IncrementPortrait
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1918818075
@@ -3996,6 +4232,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2138518219}
+  - component: {fileID: 2138518220}
   m_Layer: 0
   m_Name: P2
   m_TagString: Untagged
@@ -4030,3 +4267,22 @@ RectTransform:
   m_AnchoredPosition: {x: -501.77112, y: 504.17944}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2138518220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2138518218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bd4e726e08e9945a4690d12a496a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortraitCount: 10
+  ColorCount: 9
+  Portrait: {fileID: 1340236371}
+  Color: {fileID: 1570962946}
+  OtherPlayers:
+  - {fileID: 492835143}
+  - {fileID: 1600488213}
+  - {fileID: 515733964}
