@@ -33,19 +33,18 @@ namespace Essence.Spells
             }
         }
 
-        public static List<Character> AcquireTargets(Character caster, float angle, float distance)
+        public static List<Character> AcquireTargetsCone(Character caster, float angle, float distance)
         {
-            RaycastHit2D[] hits = new RaycastHit2D[8];
-
+            // Set up vectors
             Vector3 position = caster.transform.position;
             Vector3 direction = caster.gameObject.GetComponent<Controller>().directionPointing;
             if (direction.magnitude == 0) direction = caster.gameObject.GetComponent<Controller>().directionFacing;
 
-            //Physics2D.CircleCastNonAlloc(position, radius, direction, hits, distance, 1 << LayerMask.NameToLayer("Player"));
-            //Physics2D.RaycastNonAlloc(position, direction, hits, distance, 1 << LayerMask.NameToLayer("Player"));
-
+            // Initialize lists
+            RaycastHit2D[] hits = new RaycastHit2D[8];
             List<Character> targets = new List<Character>();
 
+            // Fire raycast at every angle in cone
             for (int i = (int)-angle; i < angle; i++)
             {
                 Vector3 dir = (Quaternion.Euler(0, 0, i) * direction).normalized;
@@ -73,6 +72,49 @@ namespace Essence.Spells
 
             return targets;
         }
+
+        public static List<Character> AcquireTargetsLine(Character caster, float radius, float distance)
+        {
+            // Set up vectors
+            Vector3 position = caster.transform.position;
+            Vector3 direction = caster.gameObject.GetComponent<Controller>().directionPointing;
+            if (direction.magnitude == 0) direction = caster.gameObject.GetComponent<Controller>().directionFacing;
+
+            // Initialize lists
+            RaycastHit2D[] hits = new RaycastHit2D[8];
+            RaycastHit2D[] wallHits = new RaycastHit2D[8];
+            List<Character> targets = new List<Character>();
+
+            // Check for wall
+            RaycastHit2D wallHit = Physics2D.CircleCast(position, radius, direction, distance, 1 << LayerMask.NameToLayer("Player"));
+            if (wallHit.collider == null)
+            {
+                // Get all objects hit
+                Physics2D.CircleCastNonAlloc(position, radius, direction, hits, distance, 1 << LayerMask.NameToLayer("Player"));
+
+                foreach (RaycastHit2D hit in hits)
+                {
+                    if (hit.collider != null)
+                    {
+                        // Parse for player objects that aren't the caster
+                        Character target = hit.collider.gameObject.GetComponent<Character>();
+                        if (target != null && target != caster)
+                        {
+                            if (!targets.Contains(target))
+                            {
+                                // Got em
+                                targets.Add(target);
+                            }
+                        }
+
+                    }
+                }
+            }
+                
+
+            return targets;
+        }
+
 
         public static Vector3 GetEulerAngles(Character character)
         {

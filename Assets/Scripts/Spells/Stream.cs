@@ -12,7 +12,8 @@ namespace Essence.Spells
     {
         private float distance;
         private float angle;
-        private float damage = 1;
+        private float radius;
+        private float damage = 5;
 
         private int wetDuration = 180;
         private int slowDuration = 180;
@@ -37,13 +38,14 @@ namespace Essence.Spells
             ParticleSystem system = stream.GetComponent<ParticleSystem>();
             angle = system.shape.angle;
             distance = system.main.startSpeed.constant * system.main.startLifetime.constant;
+            radius = system.shape.radius;
             
         }
 
 
         public override void Pulse(Character caster)
         {
-            List<Character> targets = AcquireTargets(caster, angle, distance);
+            List<Character> targets = AcquireTargetsLine(caster, radius, distance);
             
             foreach (Character target in targets)
             {

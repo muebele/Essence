@@ -33,7 +33,7 @@ namespace Essence.Spells
 
             
             // Raycast targets
-            List<Character> targets = Spell.AcquireTargets(caster, angle, distance);
+            List<Character> targets = Spell.AcquireTargetsLine(caster, angle, distance);
 
             
             foreach (Character target in targets)

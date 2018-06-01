@@ -25,6 +25,8 @@ namespace Essence.Spells
         // Update is called once per frame
         void Update()
         {
+            
+
             RaycastHit2D[] hits = new RaycastHit2D[8];
             Vector3 position = this.transform.position;
             Vector3 direction = this.caster.gameObject.GetComponent<Controller>().directionFacing;

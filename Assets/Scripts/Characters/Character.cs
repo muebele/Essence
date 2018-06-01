@@ -55,15 +55,15 @@ namespace Essence.Characters
             maxWindMana = 10;
             maxEarthMana = 10;
 
-            fireMana = 1;
-            waterMana = 1;
-            windMana = 1;
-            earthMana = 1;
+            fireMana = 10;
+            waterMana = 10;
+            windMana = 10;
+            earthMana = 10;
             
             spells[0] = new Fireball();
             spells[1] = new Stream();
             spells[2] = new Trap();
-            spells[3] = new Gust();
+            spells[3] = new Iceshards();
 
             UpdateAllManaUI();
 		}

@@ -62,6 +62,7 @@ namespace Essence.Characters
 			}
             else if (Input.GetButtonDown(playerNum + "Spell2"))
             {
+
                 spell = character.spells[1];
                 if (Input.GetButton(playerNum + "Trigger")) spell = character.spells[5];
             }

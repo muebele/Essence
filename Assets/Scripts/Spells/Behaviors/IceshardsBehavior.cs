@@ -16,6 +16,7 @@ namespace Essence.Spells
         // Use this for initialization
         void Start()
         {
+            Debug.Log("start");
             damage = 5;
 
             duration = 60;
