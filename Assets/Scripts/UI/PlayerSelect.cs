@@ -2,11 +2,15 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Essence.Characters;
+using Essence.Constants;
 
 namespace Essence.UI
 {
     public class PlayerSelect : MonoBehaviour
     {
+        public int PlayerNum;
+
         private int PortraitIndex = 1;
         private int ColorIndex = 1;
 
@@ -17,6 +21,8 @@ namespace Essence.UI
         public GameObject Color;
 
         public PlayerSelect[] OtherPlayers = new PlayerSelect[3];
+
+        public Controller Player;
 
         // Use this for initialization
         void Start()
@@ -134,6 +140,24 @@ namespace Essence.UI
             Image portrait = Portrait.GetComponent<Image>();
 
             portrait.sprite = Resources.Load<Sprite>("UI/Portraits/Portrait" + PortraitIndex);
+
+            switch (PlayerNum)
+            {
+                case 1:
+                    PlayerData.PlayerOneSprite = portrait.sprite;
+                    break;
+                case 2:
+                    PlayerData.PlayerTwoSprite = portrait.sprite;
+                    break;
+                case 3:
+                    PlayerData.PlayerThreeSprite = portrait.sprite;
+                    break;
+                case 4:
+                    PlayerData.PlayerFourSprite = portrait.sprite;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void UpdateColor()
@@ -165,6 +189,24 @@ namespace Essence.UI
             g = g / 255.0f;
             b = b / 255.0f;
             portrait.color = new Color(r, g, b);
+
+            switch (PlayerNum)
+            {
+                case 1:
+                    PlayerData.PlayerOneColor = portrait.color;
+                    break;
+                case 2:
+                    PlayerData.PlayerTwoColor = portrait.color;
+                    break;
+                case 3:
+                    PlayerData.PlayerThreeColor = portrait.color;
+                    break;
+                case 4:
+                    PlayerData.PlayerFourColor = portrait.color;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

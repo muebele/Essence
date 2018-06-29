@@ -17,7 +17,7 @@ namespace Essence.Spells
         void Start()
         {
             Debug.Log("start");
-            damage = 5;
+            damage = 8;
 
             duration = 60;
 

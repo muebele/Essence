@@ -8,6 +8,7 @@ namespace Essence.Characters
     public class Controller : MonoBehaviour
     {
         public string playerNum;
+        private Color color;
 
         private Character character;
 
@@ -23,6 +24,10 @@ namespace Essence.Characters
 
         private bool underKnockback = false;
         private int knockbackFrames = 0;
+
+        private bool knockbackDelay = false;
+        private int knockbackDelayFrames = 0;
+
         private Vector3 knockbackDirection;
 
         Spell spell = null;
@@ -123,6 +128,19 @@ namespace Essence.Characters
 		private void ProcessMovement(){
             if (!underKnockback)
             {
+                if (knockbackDelay)
+                {
+                    if (knockbackDelayFrames == 0)
+                    {
+                        knockbackDelay = false;
+                        underKnockback = true;
+                    }
+                    else
+                    {
+                        knockbackDelayFrames--;
+                    }
+                }
+
                 movement.y = Input.GetAxis(playerNum + "Vertical");
                 movement.x = Input.GetAxis(playerNum + "Horizontal");
 
@@ -160,16 +178,18 @@ namespace Essence.Characters
             }
 		}
 
-        public void ApplyKnockback(Vector3 targetLocation)
+        public void ApplyKnockback(Vector3 direction, float velocity, int frames, int delayFrames)
         {
-            Vector3 difference = targetLocation - rigidBody.transform.position;
+            Debug.Log(direction);
+            Debug.Log(velocity);
+            Debug.Log(frames);
+            Debug.Log(delayFrames);
 
-            knockbackDirection = difference.normalized * 6;
-            knockbackFrames = (int)difference.magnitude * 10;
+            knockbackDirection = direction * velocity;
+            knockbackFrames = frames - delayFrames;
+            knockbackDelayFrames = delayFrames;
 
-            Debug.Log(knockbackDirection);
-            Debug.Log(knockbackFrames);
-
+            if (delayFrames > 0) knockbackDelay = true;
             if (knockbackFrames > 0) underKnockback = true;
 
         }

@@ -10,6 +10,8 @@ namespace Essence.Spells
     {
         private float angle;
         private float distance;
+        private float speed;
+        private float time;
 
         private Vector3 origin;
 
@@ -18,7 +20,7 @@ namespace Essence.Spells
         {
             origin = caster.transform.position;
 
-            damage = 2;
+            damage = 5;
 
             duration = 100;
 
@@ -29,11 +31,13 @@ namespace Essence.Spells
             // Get area of affect
             ParticleSystem system = this.gameObject.GetComponent<ParticleSystem>();
             angle = system.shape.angle;
-            distance = system.main.startSpeed.constant * system.main.startLifetime.constant;
+            speed = system.main.startSpeed.constant;
+            time = system.main.startLifetime.constant;
+            distance = speed * time;
 
             
             // Raycast targets
-            List<Character> targets = Spell.AcquireTargetsLine(caster, angle, distance);
+            List<Character> targets = Spell.AcquireTargetsCone(caster, angle, distance);
 
             
             foreach (Character target in targets)
@@ -56,11 +60,14 @@ namespace Essence.Spells
         {
             target.health -= this.damage;
 
-            Vector3 difference = target.transform.position - origin;
-            Vector3 final = (difference.normalized * distance) + origin;
-            difference = final - target.transform.position;
+            Vector3 direction = (target.transform.position - origin).normalized;
 
-            target.GetComponent<Controller>().ApplyKnockback(final);
+            float adjustedSpeed = speed / 60; //// FIGURE OUT WHAT WE NEED TO DO HERE to get the right vel, frames
+            float velocity = distance * adjustedSpeed;
+            int frames = (int)(distance / adjustedSpeed);
+            int delayFrames = (int)(direction.magnitude / adjustedSpeed);
+
+            target.GetComponent<Controller>().ApplyKnockback(direction, velocity, frames, delayFrames);
 
 
         }

@@ -13,7 +13,7 @@ namespace Essence.Spells
         private float distance;
         private float angle;
         private float radius;
-        private float damage = 5;
+        private float damage = 8;
 
         private int wetDuration = 180;
         private int slowDuration = 180;

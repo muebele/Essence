@@ -14,7 +14,7 @@ namespace Essence.Spells
         {
             Debug.Log("iceshard construct");
 
-            damage = 5;
+            damage = 12;
 
             duration = 60;
 

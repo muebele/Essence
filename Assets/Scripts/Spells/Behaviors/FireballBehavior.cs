@@ -12,7 +12,7 @@ namespace Essence.Spells
         // Use this for initialization
         void Start()
         {
-            damage = 10;
+            damage = 15;
 
             duration = 60;
 

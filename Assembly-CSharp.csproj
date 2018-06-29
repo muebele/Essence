@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Characters\P3Controller.cs" />
     <Compile Include="Assets\Scripts\Characters\P4Controller.cs" />
     <Compile Include="Assets\Scripts\Constants\GlobalConstants.cs" />
+    <Compile Include="Assets\Scripts\Constants\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Spells\Behaviors\FireballBehavior.cs" />
     <Compile Include="Assets\Scripts\Spells\Behaviors\GustBehavior.cs" />
     <Compile Include="Assets\Scripts\Spells\Behaviors\IceshardBehavior.cs" />

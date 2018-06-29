@@ -10,6 +10,7 @@ namespace Essence.Characters
 	public class Character : MonoBehaviour
 	{
         public string playerNum;
+        public SpriteRenderer sprite;
 
 		public float health;
 		private float maxHealth;
@@ -62,10 +63,28 @@ namespace Essence.Characters
             
             spells[0] = new Fireball();
             spells[1] = new Stream();
-            spells[2] = new Trap();
+            spells[2] = new Gust();
             spells[3] = new Iceshards();
 
             UpdateAllManaUI();
+
+            switch (playerNum)
+            {
+                case "P1":
+                    sprite.color = PlayerData.PlayerOneColor;
+                    break;
+                case "P2":
+                    sprite.color = PlayerData.PlayerTwoColor;
+                    break;
+                case "P3":
+                    sprite.color = PlayerData.PlayerThreeColor;
+                    break;
+                case "P4":
+                    sprite.color = PlayerData.PlayerFourColor;
+                    break;
+                default:
+                    break;
+            }
 		}
 	
 		// Update is called once per frame
