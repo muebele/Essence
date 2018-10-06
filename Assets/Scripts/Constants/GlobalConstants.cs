@@ -9,6 +9,7 @@ namespace Essence.Constants
     public class GlobalConstants
     {
         public static float Movement_Scale = 3;
+        public static float Frame_Rate = 30;
     }
 
     public class Helpers

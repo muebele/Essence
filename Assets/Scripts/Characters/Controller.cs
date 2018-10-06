@@ -170,27 +170,36 @@ namespace Essence.Characters
             }
             else
             {
-                Debug.Log(knockbackDirection);
                 knockbackFrames--;
                 rigidBody.velocity = knockbackDirection;
 
-                if (knockbackFrames == 0) underKnockback = false;
+                if (knockbackFrames == 0)
+                {
+                    underKnockback = false;
+                }
             }
 		}
 
-        public void ApplyKnockback(Vector3 direction, float velocity, int frames, int delayFrames)
+        public void ApplyKnockback(Vector3 direction, float velocity, int activeFrames, int delayFrames)
         {
-            Debug.Log(direction);
-            Debug.Log(velocity);
-            Debug.Log(frames);
-            Debug.Log(delayFrames);
 
             knockbackDirection = direction * velocity;
-            knockbackFrames = frames - delayFrames;
+            knockbackFrames = activeFrames;
             knockbackDelayFrames = delayFrames;
 
-            if (delayFrames > 0) knockbackDelay = true;
-            if (knockbackFrames > 0) underKnockback = true;
+            
+            if (knockbackFrames > 0)
+            {
+                if (delayFrames > 0)
+                {
+                    knockbackDelay = true;
+                }
+                else
+                {
+                    underKnockback = true;
+                }
+            }
+            
 
         }
 

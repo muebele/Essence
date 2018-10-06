@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using Essence.Characters;
 using System.Collections.Generic;
+using Essence.Constants;
 
 namespace Essence.Spells
 {
@@ -35,6 +36,7 @@ namespace Essence.Spells
             time = system.main.startLifetime.constant;
             distance = speed * time;
 
+
             
             // Raycast targets
             List<Character> targets = Spell.AcquireTargetsCone(caster, angle, distance);
@@ -60,16 +62,20 @@ namespace Essence.Spells
         {
             target.health -= this.damage;
 
-            Vector3 direction = (target.transform.position - origin).normalized;
+            // Find distance to the target
+            Vector3 OriginToTarget = target.transform.position - origin;
+            Vector3 direction = OriginToTarget.normalized;
 
-            float adjustedSpeed = speed / 60; //// FIGURE OUT WHAT WE NEED TO DO HERE to get the right vel, frames
-            float velocity = distance * adjustedSpeed;
-            int frames = (int)(distance / adjustedSpeed);
-            int delayFrames = (int)(direction.magnitude / adjustedSpeed);
+            float adjustedDistance = distance - OriginToTarget.magnitude;
+            float distanceRatio = adjustedDistance / distance;
 
-            target.GetComponent<Controller>().ApplyKnockback(direction, velocity, frames, delayFrames);
+            // Find when the knockback should start and how many frames it should be active for
+            int totalFrames = (int)(time * GlobalConstants.Frame_Rate);
+            int activeFrames = (int)(distanceRatio * totalFrames);
+            int delayFrames = totalFrames - activeFrames;;
 
 
+            target.GetComponent<Controller>().ApplyKnockback(direction, speed, activeFrames, delayFrames);
         }
 
 
