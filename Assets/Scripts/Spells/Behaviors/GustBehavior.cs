@@ -21,7 +21,7 @@ namespace Essence.Spells
         {
             origin = caster.transform.position;
 
-            damage = 5;
+            damage = 8;
 
             duration = 100;
 

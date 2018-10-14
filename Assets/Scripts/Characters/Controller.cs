@@ -21,6 +21,8 @@ namespace Essence.Characters
         
         private int dashFrames = 0;
         private float dashScale = 4;
+        public int dashMaxCooldown = 20;
+        public int dashCooldown = 0;
 
         private bool underKnockback = false;
         private int knockbackFrames = 0;
@@ -43,7 +45,7 @@ namespace Essence.Characters
             character = this.gameObject.GetComponent<Character>();
 		}
 		
-		// Update is called once per frame
+		// Update players's movement, process command, and manage spell states
 		void Update ()
 		{
 			ProcessMovement ();
@@ -55,9 +57,10 @@ namespace Essence.Characters
 		private void ProcessCommand(){
             spell = null;
 
-			if (Input.GetButtonDown(playerNum + "Special")) 
+			if (Input.GetButtonDown(playerNum + "Special") && dashCooldown == 0) 
 			{
                 dashFrames = 10;
+                dashCooldown = dashMaxCooldown;
 			}
             
 			if (Input.GetButtonDown(playerNum + "Spell1")) 
@@ -203,6 +206,7 @@ namespace Essence.Characters
 
         }
 
+        // Adjust spell cooldowns, execute effect for toggled spells
         private void ManageSpells()
         {
             foreach (Spell spell in character.spells)
@@ -215,13 +219,15 @@ namespace Essence.Characters
 
                     if (continuousSpell.toggled)
                     {
+                        // This spell is active - run activity for this frame
                         continuousSpell.Update(character);
-
-                        
                     }
-
-                    
                 }
+            }
+            
+            if (dashCooldown > 0)
+            {
+                dashCooldown--;
             }
         }
 

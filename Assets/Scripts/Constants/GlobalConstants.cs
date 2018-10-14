@@ -16,8 +16,6 @@ namespace Essence.Constants
     {
         public static RaycastHit2D[] Union(RaycastHit2D[] a, RaycastHit2D[] b)
         {
-            Debug.Log(a.Length);
-            Debug.Log(b.Length);
             //RaycastHit2D[] union = new RaycastHit2D[Math.Max(a.Length, b.length)];
             int index = a.Length;
             for (int i = 0;  i < a.Length; i++)

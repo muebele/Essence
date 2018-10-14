@@ -7,7 +7,8 @@ namespace Essence.Essence
 {
     class EssenceGenerator : MonoBehaviour
     {
-        private int counter = 0;
+        private int counter = 0; // counter for frames
+        private int Respawn_Frequency = 3000; // respawn orbs every X frames
         private int mapWidth;
         private int mapHeight;
 
@@ -34,8 +35,11 @@ namespace Essence.Essence
 
         void Update()
         {
-            if (counter % 6000 == 0)
+            // Is it time to respawn?
+            if (counter % Respawn_Frequency == 0)
             {
+                // Check every spawner
+                // If empty, create orb object and place on map
                 foreach (GameObject spawner in fireSpawners)
                 {
                     if (spawner.transform.childCount == 0)

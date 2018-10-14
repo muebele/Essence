@@ -9,8 +9,8 @@ namespace Essence.Spells
 {
     public abstract class ContinuousSpell : Spell
     {
-        public int ticks = 0;
-        public int frequency;
+        public int ticks = 0; // Counter of active frames
+        public int frequency; // Spell should "pulse" every *frequency* frames
 
         public int fireDrain;
         public int waterDrain;
@@ -42,30 +42,31 @@ namespace Essence.Spells
             ticks++;
         }
 
+        // Turn spell on/off
         public void Toggle(Character caster)
         {
             if (toggled)
             {
+                // End spell
                 GameObject.Destroy(spellObject);
-                
             }
             else
             {
+                // Start spell
+                // Get animation object
                 spellObject = Resources.Load<GameObject>("Spells/" + spellName); ;
 
+                // Set starting position/angle of animation
                 spellObject.transform.position = caster.transform.position;
-                Vector3 direction = caster.gameObject.GetComponent<Controller>().directionPointing;
-                float a = Vector3.Angle(direction, new Vector3(1, 0));
-                if (caster.gameObject.GetComponent<Controller>().directionPointing.y > 0) a = -a;
-                
-                spellObject.transform.localEulerAngles = new Vector3(a, 90, 0);
-                spellObject = GameObject.Instantiate(spellObject);
+                spellObject.transform.localEulerAngles = GetEulerAngles(caster);
 
-                
+                // Instantiate
+                spellObject = GameObject.Instantiate(spellObject);
             }
 
+            
             toggled = !toggled;
-            ticks = 0;
+            ticks = 1;
         }
 
         public abstract void Pulse(Character caster);

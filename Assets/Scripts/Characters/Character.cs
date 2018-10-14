@@ -26,6 +26,7 @@ namespace Essence.Characters
 
         public float maxSpeed;
         public float speed;
+        
 
         private int ticks = 0;
 
@@ -57,14 +58,14 @@ namespace Essence.Characters
             maxEarthMana = 10;
 
             fireMana = 10;
-            waterMana = 10;
+            waterMana = 1;
             windMana = 10;
             earthMana = 10;
             
             spells[0] = new Fireball();
             spells[1] = new Stream();
             spells[2] = new Gust();
-            spells[3] = new Iceshards();
+            spells[3] = new Teleport();
 
             UpdateAllManaUI();
 

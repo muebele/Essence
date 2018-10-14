@@ -19,7 +19,7 @@ namespace Essence.Spells
 
             fireReq = 0;
             waterReq = 0;
-            windReq = 2;
+            windReq = 0;
             earthReq = 0;
 
             cooldown = 600;

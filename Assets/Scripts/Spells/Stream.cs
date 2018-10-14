@@ -13,7 +13,7 @@ namespace Essence.Spells
         private float distance;
         private float angle;
         private float radius;
-        private float damage = 8;
+        private float damage = 10;
 
         private int wetDuration = 180;
         private int slowDuration = 180;
@@ -34,7 +34,10 @@ namespace Essence.Spells
             cooldown = 0;
             frequency = 60;
 
+            //Load object resource
             GameObject stream = Resources.Load<GameObject>("Spells/" + spellName); ;
+
+            //Get the animation data
             ParticleSystem system = stream.GetComponent<ParticleSystem>();
             angle = system.shape.angle;
             distance = system.main.startSpeed.constant * system.main.startLifetime.constant;
@@ -45,6 +48,7 @@ namespace Essence.Spells
 
         public override void Pulse(Character caster)
         {
+            // Find targets hit by animation
             List<Character> targets = AcquireTargetsLine(caster, radius, distance);
             
             foreach (Character target in targets)
@@ -53,6 +57,7 @@ namespace Essence.Spells
             }
         }
 
+        // Damage and apply wet and slow
         private void Execute(Character target)
         {
             target.health -= this.damage;
